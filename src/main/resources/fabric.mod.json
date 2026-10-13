@@ -9,6 +9,11 @@
   ],
   "license": "MIT",
   "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.welles.itemrepair.ItemRepairFabric"
+    ]
+  },
   "depends": {
     "fabricloader": ">=${loader}",
     "minecraft": "${minecraft}"
