@@ -1,0 +1,18 @@
+license = "MIT"
+
+modLoader = "javafml"
+loaderVersion = "[1,)"
+
+[[mods]]
+modId = "${id}"
+displayName = "${name}"
+version = "${version}"
+authors = "Nico Welles"
+description = "Items with durability no longer disappear when they break: like the elytra, they stay in the inventory as a broken, useless version until they are repaired."
+
+[[dependencies.${id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"

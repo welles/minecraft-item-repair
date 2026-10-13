@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "Items with durability no longer disappear when they break: like the elytra, they stay in the inventory as a broken, useless version until they are repaired.",
+  "authors": [
+    "Nico Welles"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=${loader}",
+    "minecraft": "${minecraft}"
+  }
+}
