@@ -14,6 +14,9 @@
       "dev.welles.itemrepair.ItemRepairFabric"
     ]
   },
+  "mixins": [
+    "itemrepair.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader}",
     "minecraft": "${minecraft}"

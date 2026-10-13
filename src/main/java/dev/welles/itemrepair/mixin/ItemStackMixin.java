@@ -1,0 +1,66 @@
+package dev.welles.itemrepair.mixin;
+
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
+import com.llamalad7.mixinextras.sugar.Local;
+import dev.welles.itemrepair.ItemRepair;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+//? if neoforge {
+/*import net.minecraft.world.entity.LivingEntity;
+*///?} else {
+import net.minecraft.server.level.ServerPlayer;
+//?}
+
+@Mixin(ItemStack.class)
+public abstract class ItemStackMixin {
+    // NeoForge widens the owner of damaged items from ServerPlayer to LivingEntity
+    //? if neoforge {
+    /*private static final String OWNER = "Lnet/minecraft/world/entity/LivingEntity;";
+    *///?} else {
+    private static final String OWNER = "Lnet/minecraft/server/level/ServerPlayer;";
+    //?}
+    private static final String HURT_AND_BREAK = "hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;" + OWNER + "Ljava/util/function/Consumer;)V";
+
+    private ItemStack itemrepair$self() {
+        return (ItemStack) (Object) this;
+    }
+
+    /** Broken items of players take no further damage. */
+    @Inject(method = HURT_AND_BREAK, at = @At("HEAD"), cancellable = true)
+    private void itemrepair$noDamageWhenBroken(CallbackInfo ci, @Local(argsOnly = true)
+        //? if neoforge {
+        /*LivingEntity owner
+        *///?} else {
+        ServerPlayer owner
+        //?}
+    ) {
+        if (owner instanceof Player && ItemRepair.isBroken(itemrepair$self())) ci.cancel();
+    }
+
+    /**
+     * Keeps a player's item that ran out of durability instead of removing it. The break callback still runs, so the
+     * vanilla break sound and particles play and running equipment effects are stopped.
+     */
+    //? if >=1.21.2 {
+    /*@WrapWithCondition(method = "applyDamage(I" + OWNER + "Ljava/util/function/Consumer;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;shrink(I)V"))
+    *///?} else {
+    @WrapWithCondition(method = HURT_AND_BREAK, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;shrink(I)V"))
+    //?}
+    private boolean itemrepair$keepBrokenItem(ItemStack stack, int amount, @Local(argsOnly = true)
+        //? if neoforge {
+        /*LivingEntity owner
+        *///?} else {
+        ServerPlayer owner
+        //?}
+    ) {
+        if (!(owner instanceof Player player) || !ItemRepair.keepsBrokenItem(stack)) return true;
+        // e.g. a shield that broke while blocking
+        if (player.isUsingItem() && player.getUseItem() == stack) player.stopUsingItem();
+        return false;
+    }
+}
