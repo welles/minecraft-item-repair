@@ -3,6 +3,8 @@ package dev.welles.itemrepair.mixin;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.welles.itemrepair.ItemRepair;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //? if neoforge {
 /*import net.minecraft.world.entity.LivingEntity;
@@ -114,5 +119,14 @@ public abstract class ItemStackMixin {
     @Inject(method = "postHurtEnemy", at = @At("HEAD"), cancellable = true)
     private void itemrepair$noPostHurtEnemy(CallbackInfo ci) {
         if (ItemRepair.isBroken(itemrepair$self())) ci.cancel();
+    }
+
+    /** Adds a "Broken" line below the item name. */
+    @Inject(method = "getTooltipLines", at = @At("RETURN"))
+    private void itemrepair$brokenTooltip(CallbackInfoReturnable<List<Component>> cir) {
+        // hidden tooltips return an immutable list
+        if (cir.getReturnValue() instanceof ArrayList<Component> lines && !lines.isEmpty() && ItemRepair.isBroken(itemrepair$self())) {
+            lines.add(1, Component.translatableWithFallback("item.itemrepair.broken", "Broken").withStyle(ChatFormatting.RED));
+        }
     }
 }
