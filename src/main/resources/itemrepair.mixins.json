@@ -3,6 +3,7 @@
   "package": "dev.welles.itemrepair.mixin",
   "compatibilityLevel": "${java}",
   "mixins": [${mixins}],
+  "client": ["GuiGraphicsMixin"],
   "injectors": {
     "defaultRequire": 1
   }
