@@ -61,7 +61,9 @@ tasks {
 
         val mixinJava = "JAVA_${requiredJava.majorVersion}"
         val mixins = buildList {
-            addAll(listOf("ItemStackMixin"))
+            addAll(listOf("BlockMixin", "BlockStateBaseMixin", "ItemStackMixin", "PlayerMixin"))
+            // Vanilla ignores broken equipment for attributes since 1.21.2
+            if (sc.current.parsed < "1.21.2") add("LivingEntityMixin")
         }.joinToString(", ") { "\"$it\"" }
         inputs.property("mixins", mixins)
         filesMatching("*.mixins.json") { expand("java" to mixinJava, "mixins" to mixins) }
