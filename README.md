@@ -33,6 +33,7 @@ disappear like in vanilla.
 ## Configuration
 
 `config/itemrepair.properties` is created on first start. Changes are applied automatically while the game is running.
+On NeoForge it can also be edited in game: *Mods → Item Repair → Config*.
 
 | Key             | Default | Description                                                                                                  |
 |-----------------|---------|--------------------------------------------------------------------------------------------------------------|
