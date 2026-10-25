@@ -23,7 +23,9 @@ No textures or new items are added – a broken item is the same item with 0 dur
 ## Installation
 
 Install the mod on the **server and the client**. The client needs it to predict mining speed and right-click
-behaviour correctly and to show the strike-through and the "Broken" tooltip.
+behaviour correctly and to show the strike-through and the "Broken" tooltip. The server disconnects players whose
+client does not have the mod, with a message asking them to install it. On Fabric, the mod requires
+[Fabric API](https://modrinth.com/mod/fabric-api).
 
 Only items of players are kept. Equipment of mobs, armor worn by wolves and tools used by dispensers still break and
 disappear like in vanilla.

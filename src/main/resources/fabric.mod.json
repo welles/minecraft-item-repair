@@ -12,6 +12,9 @@
   "entrypoints": {
     "main": [
       "dev.welles.itemrepair.ItemRepairFabric"
+    ],
+    "client": [
+      "dev.welles.itemrepair.ItemRepairFabricClient"
     ]
   },
   "mixins": [
@@ -19,6 +22,7 @@
   ],
   "depends": {
     "fabricloader": ">=${loader}",
+    "fabric-api": "*",
     "minecraft": "${minecraft}"
   }
 }
