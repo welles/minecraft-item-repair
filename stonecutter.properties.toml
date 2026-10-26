@@ -2,7 +2,7 @@
 mod.id = "itemrepair"
 mod.name = "Item Repair"
 mod.group = "dev.welles.itemrepair"
-mod.version = "1.0.0"
+mod.version = "0.0.0-dev"
 
 deps.fabric_loader = "0.19.5"
 # Minimum Fabric Loader version required at runtime
