@@ -13,7 +13,8 @@ public class ItemRepairNeoForgeClient {
     public ItemRepairNeoForgeClient(ModContainer container) {
         // "Config" button in the mod list
         container.registerExtensionPoint(IConfigScreenFactory.class, (mod, parent) -> new ConfigScreen(
-            parent, FMLPaths.CONFIGDIR.get().resolve(ItemRepair.MOD_ID + ".properties"), Component.literal(mod.getModInfo().getDisplayName())
+            parent, FMLPaths.CONFIGDIR.get().resolve(ItemRepair.MOD_ID + ".properties"), Component.literal(mod.getModInfo().getDisplayName()),
+            RepairConfig.defaults(), RepairConfig.RANGES, RepairConfig.CHOICES
         ));
     }
 }

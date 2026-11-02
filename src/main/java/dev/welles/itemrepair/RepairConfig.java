@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -20,6 +21,11 @@ import java.util.stream.Collectors;
  * The file is re-read automatically whenever it changes on disk.
  */
 public final class RepairConfig {
+    /** The allowed values of each number setting; values outside are clamped. */
+    public static final Map<String, Range> RANGES = Map.of();
+    /** The allowed values of each setting with a fixed set of them. */
+    public static final Map<String, List<String>> CHOICES = Map.of();
+
     public boolean enabled = true;
     public Set<String> excludedItems = Set.of();
 
@@ -105,6 +111,11 @@ public final class RepairConfig {
         }
     }
 
+    /** The default value of every setting, as written to the file. */
+    public static Map<String, String> defaults() {
+        return new RepairConfig().toProperties();
+    }
+
     private Map<String, String> toProperties() {
         Map<String, String> props = new LinkedHashMap<>();
         props.put("enabled", String.valueOf(enabled));
@@ -119,5 +130,15 @@ public final class RepairConfig {
             .filter(id -> !id.isEmpty())
             .map(id -> id.contains(":") ? id : "minecraft:" + id)
             .collect(Collectors.toUnmodifiableSet());
+    }
+
+    public record Range(double min, double max) {
+        public double clamp(double value) {
+            return Math.clamp(value, min, max);
+        }
+
+        public boolean contains(double value) {
+            return value >= min && value <= max;
+        }
     }
 }

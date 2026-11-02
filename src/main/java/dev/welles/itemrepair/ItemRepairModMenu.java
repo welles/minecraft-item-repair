@@ -13,7 +13,10 @@ public class ItemRepairModMenu implements ModMenuApi {
         return parent -> new ConfigScreen(
             parent,
             FabricLoader.getInstance().getConfigDir().resolve(ItemRepair.MOD_ID + ".properties"),
-            Component.literal(FabricLoader.getInstance().getModContainer(ItemRepair.MOD_ID).map(mod -> mod.getMetadata().getName()).orElse(ItemRepair.MOD_ID))
+            Component.literal(FabricLoader.getInstance().getModContainer(ItemRepair.MOD_ID).map(mod -> mod.getMetadata().getName()).orElse(ItemRepair.MOD_ID)),
+            RepairConfig.defaults(),
+            RepairConfig.RANGES,
+            RepairConfig.CHOICES
         );
     }
 }

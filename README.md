@@ -35,6 +35,7 @@ disappear like in vanilla.
 `config/itemrepair.properties` is created on first start. Changes are applied automatically while the game is running.
 It can also be edited in game: on NeoForge in *Mods → Item Repair → Config*, on Fabric through
 [Mod Menu](https://modrinth.com/mod/modmenu).
+Every value can be reset to its default, one at a time or all at once.
 
 | Key             | Default | Description                                                                                                  |
 |-----------------|---------|--------------------------------------------------------------------------------------------------------------|
