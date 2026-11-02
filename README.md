@@ -1,3 +1,5 @@
+<img src="src/main/resources/assets/itemrepair/icon.png" alt="" width="128" align="right">
+
 # Item Repair
 
 A Minecraft mod for **Fabric** and **NeoForge** (Minecraft 1.21.1 – 26.3) that stops items from disappearing when they
