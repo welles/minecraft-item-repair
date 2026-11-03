@@ -1,5 +1,5 @@
 ---
-summary: Your gear never vanishes again: broken tools stay in your inventory, ready to be repaired.
+summary: Your gear never vanishes again: broken tools, weapons and armor stay in your inventory, ready to be repaired. Broken items are useless until you fix them at an anvil, a grindstone or with Mending.
 ---
 
 > ⚠️ **This project is AI-generated.** The code, this description and the icon of this mod were created with generative AI (Claude by Anthropic), directed by the author. Please keep that in mind, and report any problems on GitHub.
