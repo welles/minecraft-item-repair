@@ -2,7 +2,7 @@
 summary: Your gear never vanishes again: broken tools, weapons and armor stay in your inventory, ready to be repaired. Broken items are useless until you fix them at an anvil, a grindstone or with Mending.
 ---
 
-> ⚠️ **This project is AI-generated.** The code, this description and the icon of this mod were created with generative AI (Claude by Anthropic), directed by the author. Please keep that in mind, and report any problems on GitHub.
+> ⚠️ **Disclaimer: This project is AI-generated.** The code, this description and the icon of this mod were created with generative AI (Claude by Anthropic), directed by me. While I am a professional software developer, I am not a Java developer, so I use generative AI to build mods that my friends and I want to play with, and I like to share the ones that work well with everyone. I understand if you do not want to support the use of generative AI, which is why I put this disclaimer here. If you run into any problems, please report them on GitHub.
 
 # Item Repair
 
